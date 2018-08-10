@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "kiosks": {
+	  "type": "array",
+	  "items": {
+		"type": "object",
+		"properties": {
+			"url": {
+				"description": "Kiosk URL",
+				"type": "string"
+			},
+			"id": {
+				"description": "Kiosk ID",
+				"type": "string"
+			},
+			"name": {
+				"description": "Kiosk name",
+				"type": "string"
+			},
+			"created_at": {
+				"type": "string",
+				"format": "date-time"
+			},
+			"updated_at": {
+				"type": "string",
+				"format": "date-time"
+			}
+		}
+	  }
+	}
+  },
+  "required": ["kiosks"]
+}
