@@ -1,0 +1,24 @@
+{
+  "name": "piosk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/necccc/piosk.git"
+  },
+  "keywords": [],
+  "author": "nec@shell8.net",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/necccc/piosk/issues"
+  },
+  "homepage": "https://github.com/necccc/piosk#readme",
+  "dependencies": {
+    "hapi": "17.5.3"
+  }
+}
