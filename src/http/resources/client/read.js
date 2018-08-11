@@ -1,3 +1,4 @@
+const Boom = require('boom')
 const { read } = require('../../../services/client')
 
 const ClientResponse = require('../../responses/Client')
@@ -14,9 +15,11 @@ module.exports = {
 		*/
 	},
 	handler: async (request, h) => {
-		console.log('client update handler');
-
 		const data = await read(request)
+
+		if (!data) {
+			throw Boom.notFound()
+		}
 		return ClientResponse(data)
 	}
 }

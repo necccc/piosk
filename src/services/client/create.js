@@ -1,20 +1,18 @@
 const uuid = require('uuid/v4')
 const moment = require('moment')
+const store = require('../../store')
 
 module.exports = async function ({ payload }) {
 	const id = uuid()
-
-	// TODO
-	if (!global.clients) {
-		global.clients = {}
-	}
-	global.clients[id] = {
+	const data = {
 		id,
 		secret: payload.secret,
 		updated_at: moment().unix(),
 		created_at: moment().unix(),
 	}
 
-	return global.clients[id]
+	store.setClient(id, data)
+
+	return data
 
 }

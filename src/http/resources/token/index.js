@@ -1,6 +1,7 @@
-exports.register = function (server, options, next) {
+exports.register = function (server, options) {
   server.route(require('./refresh'))
-  next()
+  server.route(require('./create'))
+
 }
 
 exports.register.attributes = {

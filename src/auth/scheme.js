@@ -30,7 +30,11 @@ const authenticate = async function (request, h) {
 	try {
 		const payload = await token.decode(authorization)
 		const id = payload.sub
-		const { secret } = await client.read(id)
+		const clientData = await client.readById(id)
+
+		if (!clientData) return h.unauthenticated(unauthorized())
+
+		const { secret } = clientData
 
 		await token.validate(authorization, secret)
 

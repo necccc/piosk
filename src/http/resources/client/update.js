@@ -16,8 +16,6 @@ module.exports = {
 		*/
 	},
 	handler: async (request, h) => {
-		console.log('client update handler');
-
 		const data = await update(request)
 		return ClientUpdatedResponse(data)
 	}
