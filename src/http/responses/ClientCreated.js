@@ -1,3 +1,4 @@
 module.exports = function ({ id }) {
-  this.id = id
+  return Object.assign({}, { id })
+  //this.id = id
 }

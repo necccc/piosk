@@ -1,14 +1,15 @@
 'use strict';
 
+require('dotenv').config()
 const Hapi=require('hapi');
 
-// Create a server with a host and port
-const server=Hapi.server({
+
+const server = Hapi.server({
     host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 8000
 });
 
-// Add the route
+
 server.route({
     method:'GET',
     path:'/hello',
@@ -18,13 +19,18 @@ server.route({
     }
 });
 
-// Start the server
+const middlewares = [
+    require('./src/http/middlewares/no-cookies'),
+    require('./src/http/middlewares/authentication')
+]
+const resources = require('./src/http/resources')
+
 async function start() {
 
     try {
+        await server.register(middlewares.concat(resources))
         await server.start();
-    }
-    catch (err) {
+    } catch (err) {
         console.log(err);
         process.exit(1);
     }
