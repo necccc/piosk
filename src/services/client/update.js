@@ -4,12 +4,12 @@ const store = require('../../store')
 module.exports = async function ({ payload, auth }) {
 	const { id } = auth.credentials || {}
 
-	const data = store.getClient(id)
+	const data = store.get(id)
 
 	data.secret = payload.secret
 	data.updated_at = moment().unix()
 
-	store.setClient(id, data)
+	store.set(id, data)
 
 	return data
 

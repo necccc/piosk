@@ -1,12 +1,9 @@
-exports.register = function (server, options, next) {
+exports.register = function (server, options) {
 	server.route(require('./create'))
-	server.route(require('./read'))
-	server.route(require('./update'))
-	server.route(require('./delete'))
+	//server.route(require('./read'))
+	//server.route(require('./update'))
+	//server.route(require('./delete'))
 
-	next()
 }
 
-exports.register.attributes = {
-	name: 'http-resource-kiosk'
-}
+exports.name = 'http-resource-kiosk'

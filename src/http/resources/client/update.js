@@ -3,7 +3,7 @@ const ClientUpdatedResponse = require('../../responses/ClientUpdated')
 
 module.exports = {
 	method: 'PUT',
-	path: '/client',
+	path: '/client/{id}',
 	options: {
 		payload: {
 			allow: 'application/json'

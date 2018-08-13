@@ -2,7 +2,7 @@ const { remove } = require('../../../services/client')
 
 module.exports = {
 	method: 'DELETE',
-	path: '/client',
+	path: '/client/{id}',
 	options: {
 		payload: {
 			allow: 'application/json'

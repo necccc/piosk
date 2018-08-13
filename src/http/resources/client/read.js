@@ -5,7 +5,7 @@ const ClientResponse = require('../../responses/Client')
 
 module.exports = {
 	method: 'GET',
-	path: '/client',
+	path: '/client/{id}',
 	options: {
 		/*validate: {
 			payload: validator([

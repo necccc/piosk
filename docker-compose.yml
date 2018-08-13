@@ -7,11 +7,11 @@ services:
     volumes:
         - .:/usr/src/app
     ports:
-        - "3000:3000"
+        - "4000:4000"
     working_dir: /usr/src/app
     command: ["npm", "start"]
     environment:
-      - PORT=3000
+      - PORT=4000
       - REDIS_URL=redis
 
   redis:

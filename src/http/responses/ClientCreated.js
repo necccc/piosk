@@ -1,4 +1,3 @@
-module.exports = function ({ id }) {
-  return { id }
-  //this.id = id
+module.exports = function ({ jwt }) {
+  return {jwt }
 }

@@ -108,7 +108,7 @@ const currentTime = function () {
  * @param {string} secret
  * @return {boolean}
  */
-hasValidSignature = function (token, secret) {
+const hasValidSignature = function (token, secret) {
   return jws.verify(token, algorithm, secret)
 }
 
@@ -122,8 +122,28 @@ const error = function (code) {
   throw error
 }
 
+const create = function (payload, secret) {
+  const defaults = {
+    iss: issuer,
+    exp: moment().add(1, 'hour').unix()
+  }
+
+  return new Promise((resolve, reject) => {
+    const token = jws.sign({
+      header: {
+        typ: 'JWT',
+        alg: algorithm
+      },
+      payload: Object.assign(defaults, payload),
+      secret: secret
+    })
+
+    resolve(token)
+  })
+}
 
 module.exports = {
+  create,
   decode,
   validate
 }

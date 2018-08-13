@@ -3,5 +3,5 @@ const store = require('../../store')
 module.exports = async function ({ auth }) {
 	const { id } = auth.credentials || {}
 
-	return store.getClient(id)
+	return store.get(id)
 }
