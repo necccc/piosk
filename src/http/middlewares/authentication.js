@@ -1,9 +1,16 @@
 
 const basePath = process.env.SERVICE_BASEPATH
 
-const isClientCreation = (request) => {
-  return (request.path === `${basePath}/v1/client`)
-    && (request.method === `post`)
+const skipPaths = [
+  `${basePath}/v1/token`,
+  `${basePath}/v1/client`
+]
+
+const shouldSkipAuth = (request) => {
+  const skipByPath = skipPaths.includes(request.path)
+  const skipByMethod = request.method === `post`
+
+  return skipByPath && skipByMethod;
 }
 
 exports.register = async function (server, options) {
@@ -12,7 +19,7 @@ exports.register = async function (server, options) {
   server.auth.default('jwt')
 
   server.ext('onPreAuth', (request, h) => {
-    request.auth.skip = isClientCreation(request)
+    request.auth.skip = shouldSkipAuth(request)
     return h.continue
   })
 }

@@ -3,22 +3,11 @@
 require('dotenv').config()
 const Hapi=require('hapi');
 
-
 const server = Hapi.server({
     host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 8000,
     routes: {
         cors: true
-    }
-});
-
-
-server.route({
-    method:'GET',
-    path:'/hello',
-    handler:function(request,h) {
-
-        return'hello world';
     }
 });
 
@@ -29,7 +18,6 @@ const middlewares = [
 const resources = require('./src/http/resources')
 
 async function start() {
-
     try {
         await server.register(middlewares.concat(resources))
         await server.start();
