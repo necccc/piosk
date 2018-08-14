@@ -1,6 +1,6 @@
 module.exports = {
 	create: require('./create'),
-	//read: require('./read'),
+	read: require('./read'),
 	//readById: require('./readById'),
 	//update: require('./update'),
 	//remove: require('./remove'),
