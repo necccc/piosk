@@ -14,6 +14,7 @@ module.exports = async function ({ payload }) {
 	const data = {
 		id,
 		secret,
+		name: payload.name,
 		updated_at: moment().unix(),
 		created_at: moment().unix(),
 	}

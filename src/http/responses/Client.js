@@ -1,4 +1,4 @@
-module.exports = function ({ created_at, updated_at }) {
-  return { created_at, updated_at }
+module.exports = function ({ name, created_at, updated_at }) {
+  return { name, created_at, updated_at }
 
 }

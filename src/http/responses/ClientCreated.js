@@ -1,3 +1,3 @@
 module.exports = function ({ jwt }) {
-  return {jwt }
+  return { jwt }
 }
