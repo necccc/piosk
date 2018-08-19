@@ -7,10 +7,16 @@ const store = require('../../store')
 
 module.exports = async function ({ payload }) {
 	const { token } = payload
-	const id = await store.get(token)
+	const github_id = await store.get(token)
+
+	if (!github_id) {
+		return Boom.unauthorized("No GitHub user here for that cookie")
+	}
+
+	const id = await store.get(github_id)
 
 	if (!id) {
-		return Boom.unauthorized()
+		return Boom.unauthorized("No user here for that GitHub user")
 	}
 
 	const client = await store.get(id)
@@ -18,5 +24,5 @@ module.exports = async function ({ payload }) {
 		sub: id
 	}, client.secret)
 
-	return { jwt }
+	return { jwt, name: client.name }
 }

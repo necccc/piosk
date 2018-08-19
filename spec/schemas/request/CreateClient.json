@@ -9,6 +9,10 @@
     "name": {
 		  "description": "User name",
 		  "type": "string"
+    },
+    "github_id": {
+		  "description": "GitHub user id",
+		  "type": "string"
     }
   },
   "required": ["token"]

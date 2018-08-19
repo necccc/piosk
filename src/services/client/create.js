@@ -2,8 +2,17 @@ const uuid = require('uuid/v4')
 const moment = require('moment')
 const { promisify } = require('util')
 const crypto = require('crypto')
-const token = require('../../auth/token')
+const tokenAuth = require('../../auth/token')
 const store = require('../../store')
+
+const getRegisteredUser = async (token, githubId) => {
+
+	const registeredGithubId = await store.get(token)
+	const id = await store.get(registeredGithubId || githubId)
+
+	return id
+
+}
 
 module.exports = async function ({ payload }) {
 	const id = uuid()
@@ -11,14 +20,29 @@ module.exports = async function ({ payload }) {
 	const buf = await promisify(crypto.randomBytes)(256)
 	const secret = buf.toString('hex')
 
+	const { token, github_id, name } = payload
+
 	const data = {
 		id,
+		github_id,
 		secret,
-		name: payload.name,
+		name,
 		updated_at: moment().unix(),
 		created_at: moment().unix(),
 	}
 
+	const alreadyRegisteredId =await getRegisteredUser(token, github_id)
+
+	if (alreadyRegisteredId) {
+		store.set(token, github_id)
+
+		const alreadyRegisteredData = await store.get(alreadyRegisteredId)
+		const jwt = await tokenAuth.create({
+			sub: alreadyRegisteredId
+		}, alreadyRegisteredData.secret)
+
+		return { jwt }
+	}
 
 
 // access token from payload
@@ -26,13 +50,15 @@ module.exports = async function ({ payload }) {
 // create secret
 // store secret / token / userid
 
+
 // generate jwt
 // return jwt
 
-	store.set(payload.token, id)
+	store.set(token, github_id)
+	store.set(github_id, id)
 	store.set(id, data)
 
-	const jwt = await token.create({
+	const jwt = await tokenAuth.create({
 		sub: id
 	}, secret)
 
