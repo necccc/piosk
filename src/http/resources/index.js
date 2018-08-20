@@ -3,7 +3,7 @@ const kiosk = require('./kiosk')
 const token = require('./token')
 
 exports.register = async function (server, options) {
-  const basePath = process.env.SERVICE_BASEPATH
+  const basePath = process.env.SERVICE_BASEPATH || ''
 
   return await server.register([client, kiosk, token], {
     routes: {
