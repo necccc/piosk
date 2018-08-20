@@ -1,7 +1,17 @@
 
 const { promisify } = require('util')
 const redis = require("redis")
-const store = redis.createClient(process.env.REDIS_URL)
+
+
+const createStore = () => {
+	if (process.env.NODE_ENV === 'production') {
+		return redis.createClient(process.env.REDIS_URL)
+	} else {
+		return redis.createClient({ host: process.env.REDIS_URL })
+	}
+}
+
+const store = createStore()
 
 const get = promisify(store.get).bind(store);
 const set = promisify(store.set).bind(store);

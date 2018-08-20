@@ -187,6 +187,22 @@ traits:
           description:
             Kiosk removed successfully.
 
+    /token:
+      get:
+        description:
+          Retrieve Kiosk read token
+        is:
+          - auth_errors
+          - resource_errors
+        responses:
+          200:
+            body:
+              application/json:
+                type: KioskToken
+                example: |
+                  {
+                    "token": "12323424.123123.346345"
+                  }
 
 /client:
   post:

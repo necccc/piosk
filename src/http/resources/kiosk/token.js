@@ -7,4 +7,27 @@
 //		if secret validates token
 //			read kiosk id
 // 			kiosk id connected to clientId?
-//				serve kiosk data
+//				serve kiosk dataconst Boom = require('boom')
+const { token } = require('../../../services/kiosk')
+const KioskTokenResponse = require('../../responses/KioskToken')
+
+module.exports = {
+	method: 'GET',
+	path: '/kiosk/{id}/token',
+	options: {
+		/*validate: {
+			payload: validator([
+				validator.json('request/CreateClient')
+			])
+		}
+		*/
+	},
+	handler: async (request, h) => {
+		const data = await token(request)
+
+		if (!data) {
+			return Boom.notFound()
+		}
+		return KioskTokenResponse(data)
+	}
+}
