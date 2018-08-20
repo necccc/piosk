@@ -10,6 +10,10 @@ const shouldSkipAuth = (request) => {
   const skipByPath = skipPaths.includes(request.path)
   const skipByMethod = request.method === `post`
 
+  if (process.env.DEBUG) {
+    console.info('Skip auth on path', request.path, skipPaths,  skipByPath && skipByMethod);
+  }
+
   return skipByPath && skipByMethod;
 }
 

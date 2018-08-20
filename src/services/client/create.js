@@ -41,6 +41,11 @@ module.exports = async function ({ payload }) {
 			sub: alreadyRegisteredId
 		}, alreadyRegisteredData.secret)
 
+
+		if (process.env.DEBUG) {
+			console.info('Client already registered once');
+		}
+
 		return { jwt }
 	}
 
@@ -63,5 +68,4 @@ module.exports = async function ({ payload }) {
 	}, secret)
 
 	return { jwt }
-
 }
