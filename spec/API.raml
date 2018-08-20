@@ -193,7 +193,6 @@ traits:
     description:
       Create client
     is:
-      - auth_errors
       - write_errors
     body:
       application/json:
@@ -220,27 +219,6 @@ traits:
                 "version": 1
               }
   /{id}:
-    uriParameters:
-      id:
-        description: Client's public ID
-        type: string
-        example: 637d5881-1a61-4689-9158-36dddc72559e
-    get:
-      description:
-        Retrieve client data
-      is:
-        - auth_errors
-        - resource_errors
-      responses:
-        200:
-          body:
-            application/json:
-              type: Client
-              example: |
-                {
-                  "created_at": "2017-03-03T14:10:29+00:00",
-                  "updated_at": "2018-02-03T17:10:29+00:00"
-                }
     put:
       description:
         Update a client.
@@ -276,6 +254,23 @@ traits:
         204:
           description:
             Client removed successfully.
+
+    get:
+      description:
+        Retrieve client data
+      is:
+        - auth_errors
+        - resource_errors
+      responses:
+        200:
+          body:
+            application/json:
+              type: Client
+              example: |
+                {
+                  "created_at": "2017-03-03T14:10:29+00:00",
+                  "updated_at": "2018-02-03T17:10:29+00:00"
+                }
 
     /kiosks:
       get:

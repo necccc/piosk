@@ -1,10 +1,19 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://json-schema.org/draft-06/schema#",
   "properties": {
-    "secret": {
-		"description": "Auth secret",
-		"type": "string"
+    "token": {
+		  "description": "Access token",
+		  "type": "string"
+    },
+    "name": {
+		  "description": "User name",
+		  "type": "string"
+    },
+    "github_id": {
+		  "description": "GitHub user id",
+		  "type": "string"
     }
   },
-  "required": ["secret"]
+  "required": ["token"]
 }

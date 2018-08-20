@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
   "properties": {
-    "id": {
+    "jwt": {
       "type": "string"
     }
   },
-  "required": ["id"]
+  "required": ["jwt"]
 }

@@ -18,9 +18,18 @@
   "bugs": {
     "url": "https://github.com/necccc/piosk/issues"
   },
+  "engines": {
+    "node": "10.4.0"
+  },
   "homepage": "https://github.com/necccc/piosk#readme",
   "dependencies": {
-    "hapi": "17.5.3"
+    "ajv": "6.5.2",
+    "dotenv": "6.0.0",
+    "hapi": "17.5.3",
+    "jws": "3.1.5",
+    "moment": "2.22.2",
+    "redis": "2.8.0",
+    "uuid": "3.3.2"
   },
   "devDependencies": {
     "raml2html": "7.1.0"
