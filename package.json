@@ -18,6 +18,9 @@
   "bugs": {
     "url": "https://github.com/necccc/piosk/issues"
   },
+  "engines": {
+    "node": "10.4.0"
+  },
   "homepage": "https://github.com/necccc/piosk#readme",
   "dependencies": {
     "ajv": "6.5.2",
