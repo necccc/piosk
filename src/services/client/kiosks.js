@@ -1,5 +1,5 @@
 const store = require('../../store')
-const basePath = process.env.SERVICE_BASEPATH
+const basePath = process.env.SERVICE_BASEPATH || ''
 
 module.exports = async function ({ auth }) {
 	const { id } = auth.credentials || {}

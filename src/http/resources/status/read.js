@@ -1,6 +1,6 @@
 module.exports = {
   method: 'GET',
-  path: process.env.CAPTION_SERVICE_BASEPATH + '/status',
+  path: (process.env.SERVICE_BASEPATH || '') + '/status',
   config: {
     auth: false,
     plugins: {
