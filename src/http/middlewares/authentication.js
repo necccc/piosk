@@ -1,5 +1,5 @@
 
-const basePath = process.env.SERVICE_BASEPATH
+const basePath = process.env.SERVICE_BASEPATH || ''
 
 const skipPaths = [
   `${basePath}/v1/token`,
