@@ -2,8 +2,9 @@
 const basePath = process.env.SERVICE_BASEPATH || ''
 
 const skipPaths = [
-  `${basePath}/v1/token`,
-  `${basePath}/v1/client`
+  `${basePath}/v1/kiosk/view`,
+  `${basePath}/v1/client`,
+  `${basePath}/v1/token`
 ]
 
 const shouldSkipAuth = (request) => {

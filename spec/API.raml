@@ -203,6 +203,32 @@ traits:
                   {
                     "token": "12323424.123123.346345"
                   }
+  /view:
+    get:
+      description:
+          Read only Kiosk access by a generated JWT token, containing all the information necessary to access this data
+      is:
+        - resource_errors
+        - auth_errors
+      responses:
+        200:
+          body:
+            application/json:
+              type: Kiosk
+              example: |
+                {
+                  "name": "Office kiosk",
+                  "pages": [
+                    {
+                      "url": "https://domain.com",
+                      "time": 30
+                    },
+                    {
+                      "url": "https://internal-domain-adm.in",
+                      "time": 20
+                    }
+                  ]
+                }
 
 /client:
   post:
