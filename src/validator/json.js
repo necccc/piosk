@@ -34,10 +34,6 @@ module.exports = function (schema, field) {
 		err = e
 	}
 
-	console.log(input);
-
-	console.log(err);
-
 	if (err) throw Boom.badRequest()
 
 	return value

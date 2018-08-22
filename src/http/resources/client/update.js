@@ -5,6 +5,7 @@ module.exports = {
 	method: 'PUT',
 	path: '/client/{id}',
 	options: {
+		auth: 'jwt',
 		payload: {
 			allow: 'application/json'
 		},

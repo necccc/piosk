@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "dev": "npx nodemon index.js",
     "spec": "npx raml2html spec/API.raml > spec/API.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -32,6 +33,13 @@
     "uuid": "3.3.2"
   },
   "devDependencies": {
+    "nodemon": "1.18.3",
     "raml2html": "7.1.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "spec/*"
+    ],
+    "delay": "1500"
   }
 }

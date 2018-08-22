@@ -6,6 +6,7 @@ module.exports = {
 	method: 'POST',
 	path: '/kiosk',
 	options: {
+		auth: 'jwt',
 		payload: {
 			allow: 'application/json'
 		},

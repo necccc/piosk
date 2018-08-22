@@ -9,10 +9,11 @@ services:
     ports:
         - "4000:4000"
     working_dir: /usr/src/app
-    command: ["npm", "start"]
+    command: ["npm", "run", "dev"]
     environment:
       - PORT=4000
       - REDIS_URL=redis
+
   redis:
     image: "redis:latest"
     ports:

@@ -1,13 +1,13 @@
 const Boom = require('boom')
-const { read } = require('../../../services/client')
+const { view } = require('../../../services/kiosk')
 
-const ClientResponse = require('../../responses/Client')
+const KioskResponse = require('../../responses/Kiosk')
 
 module.exports = {
 	method: 'GET',
-	path: '/client/{id}',
+	path: '/kiosk/view',
 	options: {
-		auth: 'jwt',
+		auth: 'kiosk',
 		/*validate: {
 			payload: validator([
 				validator.json('request/CreateClient')
@@ -16,11 +16,11 @@ module.exports = {
 		*/
 	},
 	handler: async (request, h) => {
-		const data = await read(request)
+		const data = await view(request)
 
 		if (!data) {
-			throw Boom.notFound()
+			return Boom.notFound()
 		}
-		return ClientResponse(data)
+		return KioskResponse(data)
 	}
 }

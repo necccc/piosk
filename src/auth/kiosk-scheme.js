@@ -2,6 +2,7 @@ const Boom = require('boom')
 const token = require('./token')
 const client = require('../services/client')
 
+
 const unauthorized = function (err = {}) {
 	let scheme = 'Bearer'
 
@@ -16,12 +17,7 @@ const unauthorized = function (err = {}) {
 }
 
 const authenticate = async function (request, h) {
-	const skip = request.auth.skip
 	const authorization = request.headers.authorization
-
-	if (skip) {
-		return h.authenticated({ credentials: 'new' })
-	}
 
 	if (!authorization) {
 	  return h.unauthenticated(unauthorized())
@@ -29,10 +25,15 @@ const authenticate = async function (request, h) {
 
 	try {
 		const payload = await token.decode(authorization)
-		const id = payload.sub
+		const { sub: id, kiosk } = payload
+
 		const clientData = await client.readById(id)
 
 		if (!clientData) return h.unauthenticated(unauthorized())
+
+		const hasKiosk = await client.hasKiosk(id, kiosk)
+
+		if (!hasKiosk) return h.unauthenticated(unauthorized())
 
 		const { secret } = clientData
 

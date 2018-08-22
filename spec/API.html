@@ -624,16 +624,210 @@
   },
   "required": ["errors"]
 }
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_kiosk__id__token"><span class="parent">/kiosk/{id}</span>/token</a> <span class="methods"><a href="#kiosk__id__token_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_kiosk__id__token" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#kiosk__id__token_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve Kiosk read token</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="kiosk__id__token_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/kiosk/{id}</span>/token</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve Kiosk read token</p></div><ul class="nav nav-tabs"><li class="active"><a href="#kiosk__id__token_get_request" data-toggle="tab">Request</a></li><li><a href="#kiosk__id__token_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="kiosk__id__token_get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em><p>Kiosk&#39;s public ID</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>637d5881-1a61-4689-9158-36dddc72559e</code></pre></div></li></ul></div><div class="tab-pane" id="kiosk__id__token_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: KioskToken</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "token": "12323424.123123.346345"
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>The request has not been applied because it lacks valid access token for the target resource.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "description": "This field MUST contain an array with at least one error model.",
+      "items": {
+        "$ref": "ErrorModel.json"
+      }
+    },
+    "trace": {
+      "type": "string",
+      "description": "This field SHOULD contain a lowercase UUID uniquely identifying the request."
+    }
+  },
+  "required": ["errors"]
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>The server understood the request but refuses to authorize it.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "description": "This field MUST contain an array with at least one error model.",
+      "items": {
+        "$ref": "ErrorModel.json"
+      }
+    },
+    "trace": {
+      "type": "string",
+      "description": "This field SHOULD contain a lowercase UUID uniquely identifying the request."
+    }
+  },
+  "required": ["errors"]
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Caption not found.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "description": "This field MUST contain an array with at least one error model.",
+      "items": {
+        "$ref": "ErrorModel.json"
+      }
+    },
+    "trace": {
+      "type": "string",
+      "description": "This field SHOULD contain a lowercase UUID uniquely identifying the request."
+    }
+  },
+  "required": ["errors"]
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/410" target="_blank">410</a></h2><p>Caption was removed.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "description": "This field MUST contain an array with at least one error model.",
+      "items": {
+        "$ref": "ErrorModel.json"
+      }
+    },
+    "trace": {
+      "type": "string",
+      "description": "This field SHOULD contain a lowercase UUID uniquely identifying the request."
+    }
+  },
+  "required": ["errors"]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_kiosk_view"><span class="parent">/kiosk</span>/view</a> <span class="methods"><a href="#kiosk_view_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_kiosk_view" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#kiosk_view_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Read only Kiosk access by a generated JWT token, containing all the information necessary to access this data</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="kiosk_view_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/kiosk</span>/view</h4></div><div class="modal-body"><div class="alert alert-info"><p>Read only Kiosk access by a generated JWT token, containing all the information necessary to access this data</p></div><ul class="nav nav-tabs"><li class="active"><a href="#kiosk_view_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="kiosk_view_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "name": {
+		"description": "Kiosk name",
+		"type": "string"
+    },
+    "pages": {
+	  "type": "array",
+	  "items": {
+		"type": "object",
+		"properties": {
+			"url": {
+				"description": "Page URL",
+				"type": "string"
+			},
+			"time": {
+				"description": "Seconds until cycling over the next page",
+				"type": "number"
+			}
+		}
+	  }
+	},
+	"created_at": {
+		"type": "string",
+		"format": "date-time"
+	},
+	"updated_at": {
+		"type": "string",
+		"format": "date-time"
+	}
+  },
+  "required": ["name", "pages"]
+}
+</code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "name": "Office kiosk",
+  "pages": [
+    {
+      "url": "https://domain.com",
+      "time": 30
+    },
+    {
+      "url": "https://internal-domain-adm.in",
+      "time": 20
+    }
+  ]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>The request has not been applied because it lacks valid access token for the target resource.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "description": "This field MUST contain an array with at least one error model.",
+      "items": {
+        "$ref": "ErrorModel.json"
+      }
+    },
+    "trace": {
+      "type": "string",
+      "description": "This field SHOULD contain a lowercase UUID uniquely identifying the request."
+    }
+  },
+  "required": ["errors"]
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>The server understood the request but refuses to authorize it.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "description": "This field MUST contain an array with at least one error model.",
+      "items": {
+        "$ref": "ErrorModel.json"
+      }
+    },
+    "trace": {
+      "type": "string",
+      "description": "This field SHOULD contain a lowercase UUID uniquely identifying the request."
+    }
+  },
+  "required": ["errors"]
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Caption not found.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "description": "This field MUST contain an array with at least one error model.",
+      "items": {
+        "$ref": "ErrorModel.json"
+      }
+    },
+    "trace": {
+      "type": "string",
+      "description": "This field SHOULD contain a lowercase UUID uniquely identifying the request."
+    }
+  },
+  "required": ["errors"]
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/410" target="_blank">410</a></h2><p>Caption was removed.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "description": "This field MUST contain an array with at least one error model.",
+      "items": {
+        "$ref": "ErrorModel.json"
+      }
+    },
+    "trace": {
+      "type": "string",
+      "description": "This field SHOULD contain a lowercase UUID uniquely identifying the request."
+    }
+  },
+  "required": ["errors"]
+}
 </code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="client" class="panel-title">/client</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_client"><span class="parent"></span>/client</a> <span class="methods"><a href="#client_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_client" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#client_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create client</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="client_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/client</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create client</p></div><ul class="nav nav-tabs"><li class="active"><a href="#client_post_request" data-toggle="tab">Request</a></li><li><a href="#client_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="client_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "$schema": "http://json-schema.org/draft-06/schema#",
   "$id": "http://json-schema.org/draft-06/schema#",
   "properties": {
-    "secret": {
-		  "description": "Auth secret",
+    "token": {
+		  "description": "Access token",
+		  "type": "string"
+    },
+    "name": {
+		  "description": "User name",
+		  "type": "string"
+    },
+    "github_id": {
+		  "description": "GitHub user id",
 		  "type": "string"
     }
   },
-  "required": ["secret"]
+  "required": ["token"]
 }
 </code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "secret": "sfD3454as57Sf"
@@ -641,11 +835,11 @@
 </code></pre></div></div><div class="tab-pane" id="client_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Client created successfully.</p><h3>Headers</h3><ul><li><strong>Location</strong>: <em>required (string)</em><p>Link to the newly created caption resource.</p></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: json</p><p><strong>Content</strong>:</p><pre><code>{
   "$schema": "http://json-schema.org/draft-06/schema#",
   "properties": {
-    "id": {
+    "jwt": {
       "type": "string"
     }
   },
-  "required": ["id"]
+  "required": ["jwt"]
 }
 </code></pre><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "id": "05ea5318-50e6-40b0-b56a-e76295c2aca5",
@@ -971,33 +1165,11 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "properties": {
     "kiosks": {
-	  "type": "array",
-	  "items": {
-		"type": "object",
-		"properties": {
-			"url": {
-				"description": "Kiosk URL",
+	  	"type": "array",
+			"items": {
 				"type": "string"
-			},
-			"id": {
-				"description": "Kiosk ID",
-				"type": "string"
-			},
-			"name": {
-				"description": "Kiosk name",
-				"type": "string"
-			},
-			"created_at": {
-				"type": "string",
-				"format": "date-time"
-			},
-			"updated_at": {
-				"type": "string",
-				"format": "date-time"
 			}
 		}
-	  }
-	}
   },
   "required": ["kiosks"]
 }

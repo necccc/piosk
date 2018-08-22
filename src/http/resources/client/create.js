@@ -6,6 +6,7 @@ module.exports = {
 	method: 'POST',
 	path: '/client',
 	options: {
+		auth: false,
 		payload: {
 			allow: 'application/json'
 		},
