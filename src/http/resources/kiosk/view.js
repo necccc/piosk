@@ -7,6 +7,7 @@ module.exports = {
 	method: 'GET',
 	path: '/kiosk/view',
 	options: {
+		auth: 'kiosk',
 		/*validate: {
 			payload: validator([
 				validator.json('request/CreateClient')
@@ -16,6 +17,9 @@ module.exports = {
 	},
 	handler: async (request, h) => {
 		const data = await view(request)
+
+console.log("path: '/kiosk/view'");
+
 
 		if (!data) {
 			return Boom.notFound()

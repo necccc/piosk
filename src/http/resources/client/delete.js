@@ -7,6 +7,7 @@ module.exports = {
 		payload: {
 			allow: 'application/json'
 		},
+		auth: 'jwt',
 		/*validate: {
 			payload: validator([
 				validator.json('request/CreateClient')

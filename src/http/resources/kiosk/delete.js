@@ -7,6 +7,7 @@ module.exports = {
 	method: 'DELETE',
 	path: '/kiosk/{id}',
 	options: {
+		auth: 'jwt',
 		/*validate: {
 			payload: validator([
 				validator.json('request/CreateClient')

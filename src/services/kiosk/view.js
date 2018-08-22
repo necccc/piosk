@@ -10,8 +10,6 @@ module.exports = async function ({headers}) {
 	}
 
 	try {
-
-
 		const payload = await tokenAuth.decode(authorization)
 		const id = payload.sub
 		const kiosk = payload.kioskId

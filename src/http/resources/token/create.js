@@ -8,9 +8,10 @@ module.exports = {
   method: 'POST',
   path: '/token',
   options: {
-	payload: {
-		allow: 'application/json'
-	},
+	  	auth: false,
+		payload: {
+			allow: 'application/json'
+		},
 	/*validate: {
 		payload: validator([
 			validator.json('request/CreateClient')

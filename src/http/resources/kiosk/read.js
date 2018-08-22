@@ -7,6 +7,7 @@ module.exports = {
 	method: 'GET',
 	path: '/kiosk/{id}',
 	options: {
+		auth: 'jwt',
 		/*validate: {
 			payload: validator([
 				validator.json('request/CreateClient')

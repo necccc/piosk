@@ -16,12 +16,7 @@ const unauthorized = function (err = {}) {
 }
 
 const authenticate = async function (request, h) {
-	const skip = request.auth.skip
 	const authorization = request.headers.authorization
-
-	if (skip) {
-		return h.authenticated({ credentials: 'new' })
-	}
 
 	if (!authorization) {
 	  return h.unauthenticated(unauthorized())
@@ -29,6 +24,11 @@ const authenticate = async function (request, h) {
 
 	try {
 		const payload = await token.decode(authorization)
+
+		if (payload.kiosk) {
+			return h.unauthenticated(unauthorized())
+		}
+
 		const id = payload.sub
 		const clientData = await client.readById(id)
 
@@ -37,6 +37,9 @@ const authenticate = async function (request, h) {
 		const { secret } = clientData
 
 		await token.validate(authorization, secret)
+
+console.log('JWT scheme');
+
 
 		return h.authenticated({ credentials: { id, token: authorization }})
 
