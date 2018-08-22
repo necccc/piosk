@@ -18,9 +18,6 @@ module.exports = {
 	handler: async (request, h) => {
 		const data = await view(request)
 
-console.log("path: '/kiosk/view'");
-
-
 		if (!data) {
 			return Boom.notFound()
 		}

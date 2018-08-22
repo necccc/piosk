@@ -20,7 +20,7 @@ const authenticate = async function (request, h) {
 	const authorization = request.headers.authorization
 
 	if (!authorization) {
-	  return h.unauthenticated(unauthorized({message: 'no header' }))
+	  return h.unauthenticated(unauthorized())
 	}
 
 	try {
@@ -29,17 +29,15 @@ const authenticate = async function (request, h) {
 
 		const clientData = await client.readById(id)
 
-		if (!clientData) return h.unauthenticated(unauthorized({message: 'no client' }))
+		if (!clientData) return h.unauthenticated(unauthorized())
 
 		const hasKiosk = await client.hasKiosk(id, kiosk)
 
-		if (!hasKiosk) return h.unauthenticated(unauthorized({message: 'no kiosk' }))
+		if (!hasKiosk) return h.unauthenticated(unauthorized())
 
 		const { secret } = clientData
 
 		await token.validate(authorization, secret)
-
-		console.log('KIOSK scheme');
 
 		return h.authenticated({ credentials: { id, token: authorization }})
 

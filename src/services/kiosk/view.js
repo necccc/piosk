@@ -10,13 +10,10 @@ module.exports = async function ({headers}) {
 	}
 
 	try {
-		const payload = await tokenAuth.decode(authorization)
-		const id = payload.sub
-		const kiosk = payload.kioskId
+		const { kiosk } = await tokenAuth.decode(authorization)
 
-		const userData = await store.get(id)
+		return store.get(kiosk)
 
-		await tokenAuth.validate(authorization, userData.secret)
 	} catch(e) {
 		return Boom.unauthorized(e.message)
 	}

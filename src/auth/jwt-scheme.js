@@ -38,9 +38,6 @@ const authenticate = async function (request, h) {
 
 		await token.validate(authorization, secret)
 
-console.log('JWT scheme');
-
-
 		return h.authenticated({ credentials: { id, token: authorization }})
 
 	} catch (err) {
