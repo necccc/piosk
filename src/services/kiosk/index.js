@@ -4,6 +4,6 @@ module.exports = {
 	token: require('./token'),
 	view: require('./view'),
 	remove: require('./remove'),
+	update: require('./update'),
 	//readById: require('./readById'),
-	//update: require('./update'),
 }
