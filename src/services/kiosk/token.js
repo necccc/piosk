@@ -1,3 +1,4 @@
+const moment = require('moment')
 const store = require('../../store')
 const authToken = require('../../auth/token')
 
@@ -12,7 +13,9 @@ module.exports = async function ({ params, auth }) {
 	const token = await authToken.create({
 		sub: id,
 		kiosk: kioskId
-	}, client.secret)
+	}, client.secret, {
+		exp: moment().add(4, 'month').unix()
+	})
 
 	return { token }
 }
