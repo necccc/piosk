@@ -122,10 +122,10 @@ const error = function (code) {
   throw error
 }
 
-const create = function (payload, secret) {
+const create = function (payload, secret, { exp } = {}) {
   const defaults = {
     iss: issuer,
-    exp: moment().add(1, 'hour').unix()
+    exp: exp || moment().add(1, 'hour').unix()
   }
 
   return new Promise((resolve, reject) => {
