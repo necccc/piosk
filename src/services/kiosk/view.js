@@ -11,11 +11,8 @@ module.exports = async function ({headers}) {
 
 	try {
 		const { kiosk } = await tokenAuth.decode(authorization)
-
 		return store.get(kiosk)
-
 	} catch(e) {
 		return Boom.unauthorized(e.message)
 	}
-	return {}
 }
